@@ -30,6 +30,14 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'milia', github: 'jekuno/milia', branch: 'issue#76'
 
+gem 'bootstrap'
+gem 'devise-bootstrap-views'
+
+
+gem 'mini_racer'
+
+gem "font-awesome-rails"
+gem 'jquery-rails'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
