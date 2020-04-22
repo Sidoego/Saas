@@ -1,52 +1,5 @@
 <% if current_user %>
-<h3 class="pull-left">Organization: <%= @tenant.name %></h3>
-<!-- <#%= render 'projects/list' %> -->
+<%= render 'projects/list' %>
 <% else %>
-
-
-
-
-<div class="jumbotron">
-  <div class="pricing-header mx-auto text-center">
-    <h1 class="display-3"> Project Management Application</h1>
-    <p class="lead">You'll love managing your project with our SaaS application. Please take a look at our great plans</p>
-  </div>
-</div>
-
-<div class="container">
-      <div class="card-deck mb-3 text-center">
-        <div class="card mb-4 box-shadow" style="width: 100px;">
-          <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Free</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>10 users included</li>
-              <li>2 GB of storage</li>
-              <li>Email support</li>
-              <li>Help center access</li>
-            </ul>
-
-              <%= link_to 'Sign Up for free', new_user_registration_path(plan: 'free'), class: 'btn btn-outline-primary btn-lg btn-block sign-up' %>
-
-          </div>
-        </div>
-        <div class="card mb-4 box-shadow">
-          <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Pro</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>20 users included</li>
-              <li>10 GB of storage</li>
-              <li>Priority email support</li>
-              <li>Help center access</li>
-            </ul>
-            <%= link_to 'Get started', new_user_registration_path(plan: 'premium'), class: 'btn btn-primary btn-lg btn-block sign-up' %>
-          </div>
-        </div>
-      </div>
-      </div>
+<%= render 'price' %>
 <% end %>

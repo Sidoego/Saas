@@ -32,7 +32,7 @@ gem 'milia', github: 'jekuno/milia', branch: 'issue#76'
 
 gem 'bootstrap'
 gem 'devise-bootstrap-views'
-
+gem 'bootstrap-datepicker-rails'
 
 gem 'mini_racer'
 

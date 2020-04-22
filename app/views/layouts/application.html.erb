@@ -7,7 +7,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "Saas" %></title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
@@ -24,42 +24,50 @@
               <a>
                 <%= link_to "<i class='fa fa-dollar'></i> Priceing".html_safe, '#', class: "btn btn-outline-light mr-10" %></a>
             </li>
-            <% if current_user %>
-              <li class="nav-item">
-                <a><%= link_to "<i class='fa fa-users'></i> Add Members".html_safe, new_member_path, class: "btn btn-outline-light" %></a>
-              </li>
-            <% end %>
+            <% if current_user %><% end %>
           </ul>
           <ul class=" navbar-nav  mt-2 mt-lg-0">
             <%if !current_user%>
               <li class="nav-item ">
                 <a>
-                  <%= link_to "<i class='fa fa-dollar'></i> Sign In".html_safe, user_session_path, class: "btn btn-light mr-10" %></a>
+                  <%= link_to "<i class='fa fa-dollar'></i> Sign In".html_safe, user_session_path, class: "btn btn-success mr-10" %></a>
               </li>
               <li class="nav-item">
                 <a>
-                  <%= link_to "<i class='fa fa-dollar'></i> Sign Up".html_safe, new_member_path , class: "btn btn-danger mr-10" %></a>
+                  <%= link_to "<i class='fa fa-dollar'></i> Sign Up".html_safe, new_member_path , class: "btn btn-warning mr-10" %></a>
               </li>
-          <%else%>
-            <li class="nav-item">
-              <a><%= link_to "<i class='fa fa-users'></i> Sign out".html_safe, destroy_user_session_path, class: "btn btn-danger", :method => :delete %></a>
-            </li>
-          <%end%>
-        </ul>
+            <%else%>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%=current_user.email%>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="padding : 0px">
+                  <a>
+
+                      <%= link_to "<i class='fa fa-users'></i> Add Members".html_safe, new_member_path, class: "dropdown-item", style: "width:100%" %>
+
+                  </a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <div class="dropdown-divider" style="margin-bottom : 0px"></div>
+                  <a><%= link_to "Sign out".html_safe, destroy_user_session_path, class: ' btn btn-danger' , style: "width:100%", :method => :delete %>
+                  </a>
+                </div>
+              </li>
+              <button type="button" class="btn btn-primary" data-toggle="popover" data-trigger="hover" title='Company: <%=Tenant.current_tenant.name%>' data-content='Plan: <%=Tenant.current_tenant.plan.capitalize%>'><i class='fa fa-info'></i> </button>
+            <%end%>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-lg-10">
+          <%= bootstrap_flash %>
+          <%= yield %>
+        </div>
       </div>
     </div>
-  </nav>
-
-  <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col-lg-10">
-        <%= bootstrap_flash %>
-
-        <%= yield %>
-      </div>
-
-    </div>
-  </div>
 
     <!--/row-->
 
@@ -71,5 +79,5 @@
       </div>
     </footer>
 
-</body>
+  </body>
 </html>

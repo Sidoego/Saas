@@ -1,0 +1,32 @@
+<%- model_class = Project -%>
+
+<h1>Projects</h1>
+
+<table class="table ">
+  <thead>
+    <tr>
+      <th scope="col ">Title</th>
+      <th scope="col">Details</th>
+      <th scope="col">Expected complition date</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.title %></td>
+        <td><%= project.details %></td>
+        <td><%= project.expected_complition_date %></td>
+        <td  style="text-align: right;"><%= link_to 'Show', tenant_project_path(project, tenant_id: @tenant.id) %> |
+        <%= link_to 'Edit', edit_tenant_project_path(project, tenant_id: @tenant.id)  %> |
+        <%= link_to 'Destroy', tenant_project_path(project, tenant_id: @tenant.id) , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%if @tenant.can_create_project? %>
+  <%= link_to 'New Project', new_tenant_project_path(tenant_id: @tenant.id) %>
+<%end%>

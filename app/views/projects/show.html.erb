@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @project.title %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @project.details %>
+</p>
+
+<p>
+  <strong>Expected complition date:</strong>
+  <%= @project.expected_complition_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_tenant_project_path(@project, tenant_id: @tenant.id) %> |
+<%= link_to 'Back', root_path %>

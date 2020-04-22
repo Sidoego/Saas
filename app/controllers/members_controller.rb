@@ -6,6 +6,7 @@ class MembersController < ApplicationController
   def new()
     @member = Member.new()
     @user   = User.new()
+    
   end
 
   def create()

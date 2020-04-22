@@ -2,6 +2,7 @@ class Tenant < ApplicationRecord
 
    acts_as_universal_and_determines_tenant
   has_many :members, dependent: :destroy
+  has_many :projects, dependent: :destroy
   validates_uniqueness_of :name
   validates_presence_of :name
 
@@ -43,6 +44,14 @@ class Tenant < ApplicationRecord
       #
       Member.create_org_admin(user)
       #
+    end
+
+    def can_create_project?
+      if (self.plan == 'free') && (self.projects.count >= 1)
+        return false
+      else
+        return true
+      end
     end
 
 
